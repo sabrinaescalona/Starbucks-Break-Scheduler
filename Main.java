@@ -10,7 +10,7 @@ public class Main
 {
     public static void main(String args[]) throws Exception
     {
-        Barista bar1 = new Barista("5:30", "9:30", "Sabrina");
+        Barista bar1 = new Barista("5:30 am", "2:00 pm", "Sabrina");
         System.out.println("Test of shift length of bar1: " + bar1.shiftLength());
         
 

@@ -5,30 +5,34 @@
 
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.text.ParsePosition;
 import java.time.*;
 
 public class Barista 
 {   
     String shiftStart;
     String shiftEnd;
-    SimpleDateFormat format = new SimpleDateFormat("HH:MM");
     
     //Barista constructor
     public Barista(String shiftStart, String shiftEnd, String name)
     {
-        shiftStart = this.shiftStart;
-        shiftEnd = this.shiftEnd;
+        this.shiftStart = shiftStart;
+        this.shiftEnd = shiftEnd;
     }  
 
-    public double shiftLength() throws Exception
-    {
-        Date start = format.parse(shiftStart);
-        Date end = format.parse(shiftEnd);
-        double shiftLength = (Math.abs(start.getTime() - end.getTime()) / (60*60*1000)) % 24;
+    //Calculates shiftLength given start and end times
+    public float shiftLength() throws Exception
+    { 
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm aa");
+        Date start = format.parse(shiftStart, new ParsePosition(0));
+        Date end = format.parse(shiftEnd, new ParsePosition(0));
+        float shiftLength = (float) ((Math.abs(start.getTime() - end.getTime()) / (60.0*60.0*1000.0)) % 24.0);
         return shiftLength;
     }
 
     
+
+
 
     // private boolean hasLunch()
     // {
